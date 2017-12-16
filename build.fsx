@@ -3,11 +3,13 @@
 open System
 open System.IO
 open Fake
+open Fake.Testing.XUnit2
 open TeamCityHelper
 open OctoTools
 
 // Properties
 let buildDir = "./build/"
+let testDir = "./test/"
 let webBuildDir = buildDir + "_PublishedWebsites/octopusdemo/"
 let toolsDir = "./tools/"
 let nuspecFile = "./octopusdemo.nuspec"
@@ -22,6 +24,7 @@ let version =
 // Targets
 Target "Clean" (fun _ ->
     CleanDir buildDir
+    CleanDir testDir
     CleanDir packageDir
 )
 
@@ -29,6 +32,11 @@ Target "Build" (fun _ ->
     !! "src/*.sln"
         |> MSBuild buildDir "Build" ["Configuration", "Release"; "VisualStudioVersion", "11.0"]
         |> Log "AppBuild-Output: "
+)
+
+Target "Test" (fun _ ->
+    !! (buildDir + @"\*.Test.dll")
+        |> xUnit2 (fun p -> { p with HtmlOutputPath = Some (testDir @@ "xunit.html") })
 )
 
 Target "Package" (fun _ ->
@@ -59,6 +67,7 @@ Target "CreateNuGetPackage" (fun _ ->
 // Dependencies
 "Clean"
     ==> "Build"
+    ==> "Test"
     ==> "Package"
     ==> "CreateNuGetPackage"
 

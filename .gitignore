@@ -4,7 +4,10 @@
 build/
 package/
 tools/Fake/
+tools/
+test/
 .fake/
+.vs/
 
 # User-specific files
 *.suo

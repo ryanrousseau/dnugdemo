@@ -1,58 +1,65 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Xunit;
 
 namespace OctopusDemo.Test
 {
-    [TestClass]
-    public class UnitTest1
+    public class TheParseMethod
     {
-        [TestMethod]
-        public void TestMethod1()
+        [Fact]
+        public void ParsesStringsToIntegers()
         {
         }
 
-        [TestMethod]
-        public void TestMethod2()
+        [Fact]
+        public void ParsesStringsToDecimals()
         {
         }
 
-        [TestMethod]
-        public void TestMethod3()
+        [Fact]
+        public void ParsesStringsToBooleans()
+        {
+        }
+    }
+
+    public class TheNextMethod
+    {
+        [Fact]
+        public void ReturnsTheNextItemIfThereIsOne()
         {
         }
 
-        [TestMethod]
-        public void TestMethod4()
+        [Fact]
+        public void ReturnsNullIfThereIsNotANextItem()
+        {
+        }
+    }
+
+    public class ThePreviousMethod
+    {
+        [Fact]
+        public void ReturnsThePreviousItemIfThereIsOne()
         {
         }
 
-        [TestMethod]
-        public void TestMethod5()
+        [Fact]
+        public void ReturnsNullIfThereIsNotAPreviousItem()
+        {
+        }
+    }
+
+    public class TheFidgetMethod
+    {
+        [Fact]
+        public void ThrowsNullReferenceExceptionIfNullIsPassedIn()
         {
         }
 
-        [TestMethod]
-        public void TestMethod6()
+        [Fact]
+        public void ReturnsTrueIfTheParameterIsFidgetted()
         {
         }
 
-        [TestMethod]
-        public void TestMethod7()
-        {
-        }
-
-        [TestMethod]
-        public void TestMethod8()
-        {
-        }
-
-        [TestMethod]
-        public void TestMethod9()
-        {
-        }
-
-        [TestMethod]
-        public void TestMethod10()
+        [Fact]
+        public void ReturnsFalseIfTheParameterCannotBeFidgetted()
         {
         }
     }
